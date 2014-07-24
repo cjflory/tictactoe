@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="TicTacToe">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TicTacToe</title>
+    <link type="text/css" rel="stylesheet" href="/assets/app.css" />
+  </head>
+
+  <body ng-controller="MainController">
+    <div class="msg" ng-show="game.message">
+      <strong>{{ game.message }}</strong>
+      <a href="#" ng-show="game.gameOver" ng-click="$event.preventDefault(); game.newGame()">
+        New Game
+      </a>
+    </div>
+    <svg>
+      <path d="M0,102L308,102"></path>
+      <path d="M0,206L308,206"></path>
+      <path d="M102,0L102,308"></path>
+      <path d="M206,0L206,308"></path>
+      <g ng-repeat="p in game.positions" ng-attr-transform="translate({{ p.x }}, {{ p.y }})"
+         id="p{{ $index }}" class="player">
+        <rect x="0" y="0" width="100" height="100"
+              ng-click="game.move($index)"></rect>
+        <path d="M30,30L70,70" ng-show="p.player == 'x'"></path>
+        <path d="M30,70L70,30" ng-show="p.player == 'x'"></path>
+        <circle cx="50" cy="50" r="20" ng-show="p.player == 'o'"></circle>
+      </g>
+    </svg>
+    <script src="/assets/app.js"></script>
+  </body>
+</html>

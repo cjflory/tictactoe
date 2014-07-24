@@ -1,0 +1,15 @@
+{
+  "name": "tictactoe",
+  "version": "0.0.0",
+  "description": "An awesome TicTacToe game",
+  "private": true,
+  "license": "MIT",
+  "authors": [
+    "Clem Flory <cjflory@gmail.com>"
+  ],
+  "dependencies": {
+    "normalize-css": "~3.0.1",
+    "angular": "~1.2.20",
+    "lesshat": "~3.0.2"
+  }
+}

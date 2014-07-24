@@ -1,0 +1,46 @@
+@import 'bower_components/lesshat/build/lesshat-prefixed';
+
+svg {
+  .lh-border-radius(8px);
+  border: 15px solid #000;
+  width: 308px;
+  height: 308px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+
+  path {
+    fill: none;
+    stroke: black;
+    stroke-width: 4px;
+  }
+
+  .player {
+    rect {
+      fill: transparent;
+      stroke-width: 0;
+
+      &:hover {
+        cursor: pointer;
+        fill: #EEE;
+      }
+    }
+
+    path {
+      stroke-width: 12px;
+    }
+
+    circle {
+      fill: transparent;
+      stroke: black;
+      stroke-width: 12px;
+    }
+  }
+}
+
+.hide {
+  display: none;
+}
