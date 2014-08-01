@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('TicTacToe.Services', [])
-    .service('Game', ['$timeout', function ($timeout) {
+    .service('Game', function () {
       var that = this;
 
       this.message = null;
@@ -24,16 +24,17 @@
         {x: 208, y: 208}
       ];
       this.turnX = Math.round(Math.random()) === 0;
+      this.hasWon = function (board) {
+        var wins = [7, 56, 448, 73, 146, 292, 84, 273];
+
+        for (var i=0; i<wins.length; i++) {
+          if ((board & wins[i]) === wins[i]) { return true; }
+        }
+        return false;
+      };
       this.score = function () {
-        var wins = [7, 56, 448, 73, 146, 292, 84, 273],
-          hasWon = function (board) {
-            for (var i=0; i<wins.length; i++) {
-              if ((board & wins[i]) === wins[i]) { return true; }
-            }
-            return false;
-          },
-          done = (that.x.board | that.o.board) === 511,
-          winner = hasWon(that.x.board) ? that.x : hasWon(that.o.board) ? that.o : null;
+        var done = (that.x.board | that.o.board) === 511,
+          winner = that.hasWon(that.x.board) ? that.x : that.hasWon(that.o.board) ? that.o : null;
 
         if (winner) {
           that.message = 'Player "' + winner.name + '" wins!!!';
@@ -68,8 +69,8 @@
         for (var i=0; i<that.positions.length; i++) {
           delete that.positions[i].player;
         }
-        this.turnX = Math.round(Math.random()) === 0;
+        that.turnX = Math.round(Math.random()) === 0;
       };
-    }]);
+    });
 
 }());
